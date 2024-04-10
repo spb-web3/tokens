@@ -2,29 +2,28 @@
 
 pragma solidity 0.8.24;
 
-contract ManualERC20Token {
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+/**
+ * @dev Naive implementation of ERC20 spec
+ */
+
+contract ManualERC20Token is IERC20 {
     error ManualERC20Token_BalanceTooLow();
     error ManualERC20Token_AllowanceTooLow();
 
-    string private constant token_name = "ManualERC20Token";
-    string private constant token_symbol = "MET";
+    string private constant TOKEN_NAME = "ManualERC20Token";
+    string private constant TOKEN_SYMBOL = "MET";
 
     mapping(address => uint256) balances;
     mapping(address => mapping(address => uint256)) allowances;
 
-    event Transfer(address indexed _from, address indexed _to, uint256 _value);
-    event Approval(
-        address indexed _owner,
-        address indexed _spender,
-        uint256 _value
-    );
-
-    function name() public view returns (string memory) {
-        return token_name;
+    function name() public pure returns (string memory) {
+        return TOKEN_NAME;
     }
 
-    function symbol() public view returns (string memory) {
-        return token_symbol;
+    function symbol() public pure returns (string memory) {
+        return TOKEN_SYMBOL;
     }
 
     function decimals() public pure returns (uint8) {
