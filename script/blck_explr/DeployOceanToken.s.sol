@@ -6,7 +6,7 @@ import {Script} from "forge-std/Script.sol";
 import {OceanTokenERC20} from "../../src/blck_explr/OceanTokenERC20.sol";
 
 contract DeployOceanToken is Script {
-    uint256 public constant OCEAN_TOKEN_INITIAL_SUPPLY = 1_000_000 ether;
+    uint256 public constant OCEAN_TOKEN_INITIAL_SUPPLY = 7 * 10e6 ether;
 
     function run() public returns (OceanTokenERC20) {
         vm.startBroadcast();
